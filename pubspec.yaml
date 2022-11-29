@@ -17,6 +17,9 @@ dependencies:
   # Networking
   http: ^0.13.4
   dio: ^4.0.6
+  retrofit: ^3.3.1
+  built_value: ^8.4.2
+  json_annotation: ^4.7.0
 
   # Utils
   intl: ^0.17.0
@@ -35,13 +38,19 @@ dependencies:
   get_it: ^7.2.0
   sizer: ^2.0.15
   get: ^4.6.5
-  retrofit: ^3.3.1
+  transparent_pointer: ^1.0.0
+  top_snackbar_flutter: ^2.1.1
+  iconsax: ^0.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  build_runner: any
+  retrofit_generator: ^4.2.0
+  json_serializable: ^6.5.4
+  built_value_generator: ^8.4.2
 
 flutter:
   uses-material-design: true
@@ -50,6 +59,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/icons/
+    - assets/images/payment/
 
   fonts:
     - family: Poppins

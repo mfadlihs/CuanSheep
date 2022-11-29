@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class RatingStar extends StatefulWidget {
   final int rating;
-  const RatingStar({super.key, required this.rating});
+  final int max;
+  final double size;
+  const RatingStar(
+      {super.key, required this.rating, this.max = 0, this.size = 12});
 
   @override
   State<RatingStar> createState() => _RatingStarState();
@@ -13,14 +16,23 @@ class _RatingStarState extends State<RatingStar> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // Icon(
-        //   Icons.star,
-        // )
         ...List.filled(widget.rating, 0).map(
           (e) => Icon(
             Icons.star,
-            color: Color(0xffEF873D),
-            size: 12,
+            color: Color(0xffFCCE39),
+            size: widget.size,
+          ),
+        ),
+        ...List.filled(
+                widget.max - widget.rating >= 0
+                    ? widget.max - widget.rating
+                    : 0,
+                0)
+            .map(
+          (e) => Icon(
+            Icons.star_outline,
+            color: Color(0xffFCCE39),
+            size: widget.size,
           ),
         ),
       ],

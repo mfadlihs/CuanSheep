@@ -16,4 +16,12 @@ class RoutePath {
   static const String investasiForm = '/investasi/form';
   static const String investasiSk = '/investasi/sk';
   static const String investasiMetode = '/investasi/metode';
+  static const String investasiDetail = '/investasi/detail';
+  static const String investasiStatus = '/investasi/status';
+
+  static const String profile = "/profile";
+  static const String profileDetail = "/profile/detail";
+  static const String profileChat = "/profile/chat";
+
+  static const String myInvest = "/myinvest";
 }

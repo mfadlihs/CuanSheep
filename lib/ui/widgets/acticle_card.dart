@@ -59,12 +59,6 @@ class _ArticleCardState extends State<ArticleCard> {
                     SizedBox(height: 12),
                   ],
                 ),
-                // child: Text(
-                //   'ini ted alksd as askld asldd',
-                //   style: bodyBoldTextStyle(
-                //     color: Colors.white,
-                //   ),
-                // ),
               ),
             )
           ],

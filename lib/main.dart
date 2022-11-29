@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(500, 891),
+      designSize: const Size(414, 891),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: ((context, child) {
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
                   primaryColor: ColorConstants.primaryColor,
                   primarySwatch: ColorConstants.getPrimaryMaterialColor(),
                   fontFamily: 'Poppins',
-                  scaffoldBackgroundColor: ColorConstants.backgroundColor,
+                  scaffoldBackgroundColor: Colors.white,
                   sliderTheme: SliderThemeData(
                     trackHeight: 10,
                     trackShape: GradientRectSliderTrackShape(
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
                 getPages: AppRouter.pages,
-                initialRoute: RoutePath.investasiForm,
+                initialRoute: RoutePath.splash,
                 builder: (context, child) {
                   return MediaQuery(
                     data: MediaQuery.of(context).copyWith(textScaleFactor: 1),

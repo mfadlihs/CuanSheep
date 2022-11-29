@@ -16,3 +16,22 @@ bool validatePassword(String? value) {
   }
   return true;
 }
+
+bool validateName(String? value) {
+  if (value == null || value.isEmpty) {
+    return false;
+  }
+  return true;
+}
+
+bool validatePasswordConfirmation(String? value, String? password) {
+  if (value == null || value.isEmpty) {
+    return false;
+  }
+
+  if (value != password) {
+    return false;
+  }
+
+  return true;
+}

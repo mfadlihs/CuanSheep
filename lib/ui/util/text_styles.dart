@@ -49,7 +49,7 @@ TextStyle bodyRegularTextStyle({
   double? height,
 }) {
   return TextStyle(
-    fontSize: size ?? 14,
+    fontSize: size ?? 16,
     color: color ?? Color(0xFF000000),
     fontWeight: weight ?? FontWeight.w400,
     fontFamily: fontFamily ?? 'Poppins',
@@ -83,7 +83,7 @@ TextStyle bodyBoldTextStyle({
   return TextStyle(
     fontSize: size ?? 12,
     color: color ?? Color(0xFF000000),
-    fontWeight: weight ?? FontWeight.w600,
+    fontWeight: weight ?? FontWeight.w700,
     fontFamily: fontFamily ?? 'Poppins',
     letterSpacing: letterSpacing,
     fontStyle: fontStyle,

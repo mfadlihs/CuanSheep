@@ -4,10 +4,13 @@ class ColorConstants {
   static const primaryColor = Color(0xFFFFE465);
   static const secondaryColor = Color(0xFF343A40);
   static const tertiaryColor = Color(0xFFEAB139);
-  static const backgroundColor = Color.fromARGB(255, 248, 250, 255);
+  static const backgroundColor = Color(0xfff4f5ff);
   static const blue = Color(0xFF376AED);
+  static const icon = Color(0xff130F26);
 
   static const black2 = Color(0xFF272727);
+
+  static const text2 = Color(0xff393939);
 
   static MaterialColor getPrimaryMaterialColor() {
     return MaterialColor(
