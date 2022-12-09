@@ -40,6 +40,10 @@ class ImageAsset {
     ])
   ];
 
+  static String bank(String bank) {
+    return 'assets/images/payment/${bank.toLowerCase()}.png';
+  }
+
   static String briva_va = 'assets/images/payment/briva_va.png';
   static String bca_va = 'assets/images/payment/bca_va.png';
   static String bni_va = 'assets/images/payment/bni_va.png';

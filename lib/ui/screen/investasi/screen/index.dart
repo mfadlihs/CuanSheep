@@ -1,8 +1,13 @@
+import 'package:cuan_sheep/services/api/api_client.dart';
+import 'package:cuan_sheep/ui/screen/home/widget/pen_wrapper.dart';
+import 'package:cuan_sheep/ui/screen/investasi/controller/investasi_controller.dart';
 import 'package:cuan_sheep/ui/util/route_names.dart';
 import 'package:cuan_sheep/ui/util/text_styles.dart';
+import 'package:cuan_sheep/ui/widgets/bottom_navbar.dart';
 import 'package:cuan_sheep/ui/widgets/custom_appbar.dart';
 import 'package:cuan_sheep/ui/widgets/custom_button.dart';
-import 'package:cuan_sheep/ui/widgets/invest_card.dart';
+import 'package:cuan_sheep/ui/widgets/pen_card.dart';
+import 'package:cuan_sheep/ui/widgets/pen_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,12 +19,22 @@ class InvestasiScreen extends StatefulWidget {
 }
 
 class _InvestasiScreenState extends State<InvestasiScreen> {
+  final investasiController = Get.find<InvestasiController>();
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      investasiController.pens(await RestApi.getPens(context));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
 
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: BottomNavbar(route: 1),
         appBar: CustomAppbar(
           title: "Cuan Investasi",
         ),
@@ -77,17 +92,11 @@ class _InvestasiScreenState extends State<InvestasiScreen> {
                   'Proyek Investasi dibuka ...',
                   style: bodyRegularTextStyle(),
                 ),
-                SizedBox(height: 15),
-                InvestCard(),
-                SizedBox(height: 15),
-                InvestCard(),
-                SizedBox(height: 15),
-                InvestCard(),
-                SizedBox(height: 15),
-                InvestCard(),
-                SizedBox(height: 15),
-                InvestCard(),
-                SizedBox(height: 30),
+                ...investasiController.pens.value.map((value) {
+                  return PenCard(data: value);
+                }),
+                // PenWrapperHome(),
+                PenWrapper(controller: investasiController.pens)
               ],
             ),
           ),

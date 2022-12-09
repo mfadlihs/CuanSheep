@@ -1,9 +1,12 @@
+import 'package:cuan_sheep/ui/screen/investasi/controller/investasi_controller.dart';
 import 'package:cuan_sheep/ui/screen/investasi/routes/detail/widget/card_methode_pembayaran.dart';
 import 'package:cuan_sheep/ui/util/color_constant.dart';
+import 'package:cuan_sheep/ui/util/formatter.dart';
 import 'package:cuan_sheep/ui/util/text_styles.dart';
 import 'package:cuan_sheep/ui/widgets/custom_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class InvestasiDetailScreen extends StatefulWidget {
@@ -14,6 +17,9 @@ class InvestasiDetailScreen extends StatefulWidget {
 }
 
 class _InvestasiDetailScreenState extends State<InvestasiDetailScreen> {
+  final investasiController = Get.find<InvestasiController>();
+  var id = Get.parameters['id'];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -61,7 +67,10 @@ class _InvestasiDetailScreenState extends State<InvestasiDetailScreen> {
                           style: bodyRegularTextStyle(),
                         ),
                         Text(
-                          "Rp100.000",
+                          // "Rp100.000",
+                          Formatter.uang(investasiController.unit.value *
+                              num.parse(
+                                  investasiController.getPenDetail(id!).price)),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,

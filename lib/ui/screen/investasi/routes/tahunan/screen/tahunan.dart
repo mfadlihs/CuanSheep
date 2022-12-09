@@ -1,7 +1,10 @@
+import 'package:cuan_sheep/ui/screen/investasi/controller/investasi_controller.dart';
 import 'package:cuan_sheep/ui/util/color_constant.dart';
 import 'package:cuan_sheep/ui/util/text_styles.dart';
+import 'package:cuan_sheep/ui/widgets/bottom_navbar.dart';
 import 'package:cuan_sheep/ui/widgets/custom_appbar.dart';
-import 'package:cuan_sheep/ui/widgets/invest_card.dart';
+import 'package:cuan_sheep/ui/widgets/pen_card.dart';
+import 'package:cuan_sheep/ui/widgets/pen_wrapper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,10 +18,13 @@ class InvestasiTahunanScreen extends StatefulWidget {
 }
 
 class _InvestasiTahunanScreenState extends State<InvestasiTahunanScreen> {
+  final investasiController = Get.find<InvestasiController>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: BottomNavbar(route: 1),
         appBar: CustomAppbar(
           title: "Paket Tahunan",
           color: ColorConstants.primaryColor,
@@ -54,7 +60,7 @@ class _InvestasiTahunanScreenState extends State<InvestasiTahunanScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 25.h,
+                    height: 22.h,
                   ),
                   Container(
                     decoration: BoxDecoration(
@@ -75,27 +81,7 @@ class _InvestasiTahunanScreenState extends State<InvestasiTahunanScreen> {
                           style: bodyRegularTextStyle(),
                         ),
                         SizedBox(height: 15),
-                        InvestCard(),
-                        SizedBox(height: 15),
-                        InvestCard(),
-                        SizedBox(height: 15),
-                        InvestCard(),
-                        SizedBox(height: 15),
-                        InvestCard(),
-                        SizedBox(height: 15),
-                        InvestCard(),
-                        SizedBox(height: 15),
-                        InvestCard(),
-                        SizedBox(height: 15),
-                        InvestCard(),
-                        SizedBox(height: 15),
-                        InvestCard(),
-                        SizedBox(height: 15),
-                        InvestCard(),
-                        SizedBox(height: 15),
-                        InvestCard(),
-                        SizedBox(height: 15),
-                        InvestCard(),
+                        PenWrapper(controller: investasiController.pens)
                       ],
                     ),
                   )

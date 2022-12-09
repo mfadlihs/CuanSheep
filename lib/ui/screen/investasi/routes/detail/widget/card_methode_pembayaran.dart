@@ -94,7 +94,7 @@ class _MetodePembayaranCardState extends State<MetodePembayaranCard> {
             ),
           ),
           Text(
-            "Hanya menerima dari bank BRI ",
+            "Hanya menerima dari bank BCA",
             style: captionTextStyle(
               color: Color(0xff212529).withOpacity(0.68),
             ),

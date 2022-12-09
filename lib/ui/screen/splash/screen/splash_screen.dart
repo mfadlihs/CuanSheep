@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cuan_sheep/services/api/api_client.dart';
 import 'package:cuan_sheep/ui/util/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,6 +19,8 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      RestApi.checkValidToken(context);
+
       Timer(Duration(seconds: 3), () {
         Get.offAllNamed(RoutePath.launch);
       });

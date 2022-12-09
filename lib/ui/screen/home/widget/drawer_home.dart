@@ -1,6 +1,8 @@
 import 'package:cuan_sheep/ui/screen/global/controller/user_controller.dart';
+import 'package:cuan_sheep/ui/screen/home/controller/home_controller.dart';
 import 'package:cuan_sheep/ui/util/color_constant.dart';
 import 'package:cuan_sheep/ui/util/text_styles.dart';
+import 'package:cuan_sheep/utils/logout.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,6 +18,7 @@ class DrawerHome extends StatefulWidget {
 
 class _DrawerHomeState extends State<DrawerHome> {
   final userController = Get.find<UserController>();
+  final homeController = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +43,7 @@ class _DrawerHomeState extends State<DrawerHome> {
                 children: [
                   Obx(() {
                     return Text(
-                      "${userController.user.value.first_name} ${userController.user.value.last_name}",
+                      "${homeController.userData.value.first_name} ${homeController.userData.value.last_name}",
                       style: bodyBoldTextStyle(
                         weight: FontWeight.w600,
                       ),
@@ -54,7 +57,7 @@ class _DrawerHomeState extends State<DrawerHome> {
                   SizedBox(height: 4),
                   Obx(() {
                     return Text(
-                      userController.user.value.email,
+                      homeController.userData.value.email,
                       style: bodyBoldTextStyle(
                         weight: FontWeight.w600,
                       ),
@@ -122,7 +125,9 @@ class _DrawerHomeState extends State<DrawerHome> {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      logout();
+                    },
                     child: Text(
                       'Keluar',
                       style: bodyBoldTextStyle(),

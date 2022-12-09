@@ -68,6 +68,20 @@ class UserData {
     required this.updated_at,
   });
 
+  UserData.initValue({
+    this.id = 0,
+    this.first_name = "",
+    this.address = "",
+    this.email = "",
+    this.activation_code = "",
+    this.created_at = "",
+    this.email_verified_at = "",
+    this.is_active = "",
+    this.last_name = "",
+    this.phone = "",
+    this.updated_at = "",
+  });
+
   factory UserData.fromJson(Map<String, dynamic> json) =>
       _$UserDataFromJson(json);
   Map<String, dynamic> toJson() => _$UserDataToJson(this);

@@ -204,9 +204,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               style: bodyRegularTextStyle(),
                             ),
                             InkWell(
-                              onTap: () {
-                                print('ini pindah daftar');
-                              },
+                              onTap: () {},
                               child: Text(
                                 'Daftar disini',
                                 style: bodyBoldTextStyle(

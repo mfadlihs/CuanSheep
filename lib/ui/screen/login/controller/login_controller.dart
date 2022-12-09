@@ -9,6 +9,5 @@ class LoginController extends GetxController {
 
   static loginApi() async {
     // dynamic s = await RestApi.api.get(RestApi.login);
-    // print(s);
   }
 }

@@ -4,7 +4,6 @@ import 'package:cuan_sheep/ui/util/text_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 
 class CustomAppbar extends StatelessWidget with PreferredSizeWidget {
   final String title;

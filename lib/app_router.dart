@@ -17,8 +17,10 @@ import 'package:cuan_sheep/ui/screen/login/controller/login_controller.dart';
 import 'package:cuan_sheep/ui/screen/login/screen/login_screen.dart';
 import 'package:cuan_sheep/ui/screen/my_invest/binding/myinvest_binding.dart';
 import 'package:cuan_sheep/ui/screen/my_invest/screen/my_invest_screen.dart';
+import 'package:cuan_sheep/ui/screen/panduan/binding/panduan_binding.dart';
 import 'package:cuan_sheep/ui/screen/panduan/faq.dart';
-import 'package:cuan_sheep/ui/screen/panduan/index.dart';
+import 'package:cuan_sheep/ui/screen/panduan/screen/detail.dart';
+import 'package:cuan_sheep/ui/screen/panduan/screen/index.dart';
 import 'package:cuan_sheep/ui/screen/panduan/investasi.dart';
 import 'package:cuan_sheep/ui/screen/panduan/syarat.dart';
 import 'package:cuan_sheep/ui/screen/profile/router/chat/screen/chat_screen.dart';
@@ -30,13 +32,13 @@ import 'package:cuan_sheep/ui/screen/splash/screen/splash_screen.dart';
 import 'package:cuan_sheep/ui/util/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 
 class AppRouter {
   static final pages = <GetPage<dynamic>>[
     GetPage(
       name: RoutePath.splash,
       page: () => SplashScreen(),
+      binding: UserBinding(),
     ),
     GetPage(
       name: RoutePath.home,
@@ -56,20 +58,26 @@ class AppRouter {
     GetPage(
       name: RoutePath.investasiRegular,
       page: () => InvestasiRegularScreen(),
+      bindings: [
+        InvestasiBinding(),
+      ],
     ),
     GetPage(
       name: RoutePath.investasiTahunan,
       page: () => InvestasiTahunanScreen(),
+      bindings: [
+        InvestasiBinding(),
+      ],
     ),
     GetPage(
-      name: RoutePath.investasiForm,
+      name: RoutePath.investasiForm(),
       page: () => InvestasiFormScreen(),
       bindings: [
         InvestasiBinding(),
       ],
     ),
     GetPage(
-      name: RoutePath.investasiDetail,
+      name: RoutePath.investasiDetail(),
       page: () => InvestasiDetailScreen(),
       binding: InvestasiBinding(),
     ),
@@ -79,7 +87,7 @@ class AppRouter {
       binding: InvestasiBinding(),
     ),
     GetPage(
-      name: RoutePath.investasiMetode,
+      name: RoutePath.investasiMetode(),
       page: () => InvestasiMetodeTransaksiScreen(),
       binding: InvestasiBinding(),
     ),
@@ -100,18 +108,12 @@ class AppRouter {
     GetPage(
       name: RoutePath.panduan,
       page: () => PanduanScreen(),
+      binding: PanduanBinding(),
     ),
     GetPage(
-      name: RoutePath.panduanFaq,
-      page: () => PanduanFaqScreen(),
-    ),
-    GetPage(
-      name: RoutePath.panduanInvestasi,
-      page: () => PanduanInvestasiScreen(),
-    ),
-    GetPage(
-      name: RoutePath.panduanSyarat,
-      page: () => PanduanSyaratScreen(),
+      name: RoutePath.panduanDetail(),
+      page: () => PanduanDetailScreen(),
+      binding: PanduanBinding(),
     ),
     GetPage(
       name: RoutePath.signup,
