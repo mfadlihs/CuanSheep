@@ -38,8 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      homeController.userData(await RestApi.getUser(context));
+      final user = await RestApi.getUser(context);
+
+      homeController.userData(user);
       homeController.penData(await RestApi.getPens(context));
+      userController.user(user);
+
+      print(userController.user.value.first_name);
     });
   }
 

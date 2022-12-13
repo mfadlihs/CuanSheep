@@ -21,6 +21,8 @@ class InvestasiController extends GetxController {
 
   RxBool isReadTerms = false.obs;
 
+  Rx<Payment> choosedPayment = Payment.initValue().obs;
+
   void changeMethodTransaction(String image, String text) {
     method_transaction(MethodTransaction(image: image, text: text));
     update();

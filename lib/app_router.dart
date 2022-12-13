@@ -3,6 +3,7 @@ import 'package:cuan_sheep/ui/screen/global/controller/user_controller.dart';
 import 'package:cuan_sheep/ui/screen/home/binding/home_binding.dart';
 import 'package:cuan_sheep/ui/screen/home/screen/home_screen.dart';
 import 'package:cuan_sheep/ui/screen/investasi/binding/investasi_binding.dart';
+import 'package:cuan_sheep/ui/screen/investasi/routes/bukti_pembayaran/bukti_pembayaran_screen.dart';
 import 'package:cuan_sheep/ui/screen/investasi/routes/detail/screen/detail.dart';
 import 'package:cuan_sheep/ui/screen/investasi/routes/form/screen/form.dart';
 import 'package:cuan_sheep/ui/screen/investasi/routes/status/screen/status.dart';
@@ -92,6 +93,14 @@ class AppRouter {
       binding: InvestasiBinding(),
     ),
     GetPage(
+      name: RoutePath.investasiUpload(),
+      page: () => BuktiPembayaranScreen(),
+      bindings: [
+        UserBinding(),
+        InvestasiBinding(),
+      ],
+    ),
+    GetPage(
       name: RoutePath.investasiStatus,
       page: () => InvestasiStatusScreen(),
       binding: InvestasiBinding(),
@@ -121,7 +130,7 @@ class AppRouter {
       binding: SignupBinding(),
     ),
     GetPage(
-      name: RoutePath.profile,
+      name: RoutePath.profile(),
       page: () => ProfileScreen(),
     ),
     GetPage(

@@ -1,17 +1,25 @@
 import 'package:cuan_sheep/data/ImageAsset.dart';
+import 'package:cuan_sheep/services/model/kandang/kandang.dart';
+import 'package:cuan_sheep/ui/util/formatter.dart';
+import 'package:cuan_sheep/ui/util/route_names.dart';
 import 'package:cuan_sheep/ui/util/text_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 class CardInvestProfile extends StatefulWidget {
-  const CardInvestProfile({super.key});
+  Kandang data;
+  CardInvestProfile({super.key, required this.data});
 
   @override
   State<CardInvestProfile> createState() => _CardInvestProfileState();
 }
 
 class _CardInvestProfileState extends State<CardInvestProfile> {
+  var percent = NumberFormat.percentPattern("ar");
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,7 +61,7 @@ class _CardInvestProfileState extends State<CardInvestProfile> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
-                          "Ibu Salimah #1",
+                          widget.data.name,
                           style: h4TextStyle(
                             height: 1,
                           ),
@@ -63,14 +71,15 @@ class _CardInvestProfileState extends State<CardInvestProfile> {
                           children: [
                             Expanded(
                               child: LinearProgressIndicator(
-                                value: 0.5,
+                                value: (num.parse(widget.data.collected) /
+                                    num.parse(widget.data.needs)),
                                 backgroundColor: Colors.grey,
                                 minHeight: 6,
                               ),
                             ),
                             SizedBox(width: 10),
                             Text(
-                              '60%',
+                              '${percent.format(num.parse(widget.data.collected) / num.parse(widget.data.needs))}',
                               style: captionTextStyle(size: 12),
                             ),
                           ],
@@ -85,7 +94,7 @@ class _CardInvestProfileState extends State<CardInvestProfile> {
                               ),
                             ),
                             Text(
-                              "Rp. 3.300.000",
+                              Formatter.uang(num.parse(widget.data.needs)),
                               style: bodyRegularTextStyle(
                                 size: 12,
                               ),
@@ -102,7 +111,7 @@ class _CardInvestProfileState extends State<CardInvestProfile> {
                               ),
                             ),
                             Text(
-                              "Rp. 1.700.000",
+                              Formatter.uang(num.parse(widget.data.collected)),
                               style: bodyRegularTextStyle(
                                 size: 12,
                               ),
@@ -119,7 +128,7 @@ class _CardInvestProfileState extends State<CardInvestProfile> {
                               ),
                             ),
                             Text(
-                              "5 Bulan",
+                              "${widget.data.duration} Bulan",
                               style: bodyRegularTextStyle(
                                 size: 12,
                               ),
@@ -127,7 +136,10 @@ class _CardInvestProfileState extends State<CardInvestProfile> {
                           ],
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed(
+                                RoutePath.investasiForm(id: widget.data.id));
+                          },
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.zero,
                             minimumSize: Size.fromHeight(30),

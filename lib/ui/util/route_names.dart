@@ -26,7 +26,6 @@ class RoutePath {
     return '/investasi/metode/$farmerId';
   }
 
-  // static const String investasiDetail = '/investasi/detail';
   static String investasiDetail(
       {dynamic id = ":id", dynamic farmerId = ":farmerId"}) {
     return '/investasi/detail/$id/$farmerId';
@@ -34,9 +33,15 @@ class RoutePath {
 
   static const String investasiStatus = '/investasi/status';
 
-  static const String profile = "/profile";
+  static String investasiUpload({dynamic id = ":id"}) {
+    return '/investasi/upload/$id';
+  }
+
+  static String profile({dynamic id = ":id"}) {
+    return "/profile/$id";
+  }
+
   static const String profileDetail = "/profile/detail";
   static const String profileChat = "/profile/chat";
-
   static const String myInvest = "/myinvest";
 }

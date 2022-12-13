@@ -61,43 +61,6 @@ class _MyInvestRecordingState extends State<MyInvestRecording> {
             ),
           ),
         ),
-        // SizedBox(
-        //   height: 75.h,
-        //   width: 100.w,
-        //   child: ListView(
-        //     scrollDirection: Axis.vertical,
-        //     children: [
-        //       // SizedBox(height: 160),
-        //       IgnorePointer(
-        //         child: SizedBox(height: 160),
-        //       ),
-        //       Container(
-        //         width: 100.w,
-        //         height: 100,
-        //         color: Colors.blueGrey,
-        //       ),
-        //       SizedBox(height: 160),
-        //       Container(
-        //         width: 100.w,
-        //         height: 100,
-        //         color: Colors.blueGrey,
-        //       ),
-        //       SizedBox(height: 160),
-        //       Container(
-        //         width: 100.w,
-        //         height: 100,
-        //         color: Colors.blueGrey,
-        //       ),
-        //       SizedBox(height: 160),
-        //       Container(
-        //         width: 100.w,
-        //         height: 100,
-        //         color: Colors.blueGrey,
-        //       ),
-        //     ],
-        //   ),
-        // ),
-
         TransparentPointer(
           child: SizedBox(
             height: 75.h,

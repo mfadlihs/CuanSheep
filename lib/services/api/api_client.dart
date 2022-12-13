@@ -11,6 +11,8 @@ import 'package:cuan_sheep/services/model/pen/pen_detail_response.dart';
 import 'package:cuan_sheep/services/model/pen/pen_response.dart';
 import 'package:cuan_sheep/services/model/popup/popup.dart';
 import 'package:cuan_sheep/services/model/predict/predict_response.dart';
+import 'package:cuan_sheep/services/model/profile/profile.dart';
+import 'package:cuan_sheep/services/model/profile/profile_response.dart';
 import 'package:cuan_sheep/ui/screen/global/controller/user_controller.dart';
 import 'package:cuan_sheep/ui/screen/home/controller/home_controller.dart';
 import 'package:cuan_sheep/ui/util/route_names.dart';
@@ -38,6 +40,10 @@ class RestApi {
   static onErrorToken(BuildContext context) {
     showAlert("error token, please refresh or logout", context, isFalse: true);
     logout();
+  }
+
+  static gatau(dynamic e) {
+    print(e);
   }
 
   static Future login(BuildContext context,
@@ -100,7 +106,10 @@ class RestApi {
     final api = Dio();
 
     try {
-      api.options.headers = await header();
+      // api.options.headers = await header();
+      api.options.headers = {
+        "Authorization": await 'asdasd',
+      };
       Response res = await api.get("$baseUrl/pop-up");
 
       Popup data = Popup.fromJson(res.data);
@@ -183,6 +192,20 @@ class RestApi {
 
       PaymentResponse response = PaymentResponse.fromJson(request.data);
       return response.payment;
+    } on DioError catch (e) {
+      return onErrorToken(context);
+    }
+  }
+
+  static Future<Profile> getFarmer(BuildContext context, num id) async {
+    final api = Dio();
+
+    try {
+      api.options.headers = await header();
+      Response request = await api.get("$baseUrl/peternak/$id");
+
+      ProfileResponse response = ProfileResponse.fromJson(request.data);
+      return response.data;
     } on DioError catch (e) {
       return onErrorToken(context);
     }

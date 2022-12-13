@@ -92,7 +92,7 @@ class _InvestasiMetodeTransaksiScreenState
                                   controller.changeMethodTransaction(
                                       ImageAsset.bank(e.bank),
                                       "Bank ${e.bank}");
-
+                                  controller.choosedPayment(e);
                                   Get.back();
                                 },
                                 child: Padding(

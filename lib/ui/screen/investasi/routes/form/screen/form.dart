@@ -127,17 +127,6 @@ class _InvestasiFormScreenState extends State<InvestasiFormScreen> {
                                             color: ColorConstants.black2,
                                           ),
                                         ),
-                                        // Obx(
-                                        //   () => Text(
-                                        //     investasiController
-                                        //         .getPenDetail(id!)
-                                        //         .farmer
-                                        //         .name,
-                                        //     style: bodyBoldTextStyle(
-                                        //       color: ColorConstants.black2,
-                                        //     ),
-                                        //   ),
-                                        // ),
                                       ],
                                     )
                                   ],
@@ -148,11 +137,18 @@ class _InvestasiFormScreenState extends State<InvestasiFormScreen> {
                                 "Nama Lengkap",
                                 style: bodyBoldTextStyle(),
                               ),
-                              Obx(() => InformationForm(
-                                  text: investasiController
-                                      .getPenDetail(id!)
-                                      .farmer
-                                      .name)),
+                              Obx(
+                                () => InkWell(
+                                  onTap: () {
+                                    Get.toNamed(RoutePath.profile(id: id));
+                                  },
+                                  child: InformationForm(
+                                      text: investasiController
+                                          .getPenDetail(id!)
+                                          .farmer
+                                          .name),
+                                ),
+                              ),
                               Text(
                                 "Peternakan",
                                 style: bodyBoldTextStyle(),
@@ -257,6 +253,9 @@ class _InvestasiFormScreenState extends State<InvestasiFormScreen> {
                                         CustomButton(
                                           text: "Hitung",
                                           onPressed: () async {
+                                            if (predict.numberValue == 0)
+                                              return;
+
                                             try {
                                               num data =
                                                   await RestApi.postPrediksi(
@@ -334,8 +333,7 @@ class _InvestasiFormScreenState extends State<InvestasiFormScreen> {
                                                       .getPenDetail(id!)
                                                       .stock),
                                                 );
-                                                showAlert(
-                                                    "tidak boleh melebihi stock",
+                                                showAlert("melebihi stock unit",
                                                     context,
                                                     isFalse: true);
 

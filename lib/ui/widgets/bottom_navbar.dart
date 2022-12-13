@@ -10,9 +10,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 
 class BottomNavbar extends StatefulWidget {
-  int route;
+  int? route;
 
-  BottomNavbar({super.key, required this.route});
+  BottomNavbar({super.key, this.route});
 
   @override
   State<BottomNavbar> createState() => _BottomNavbarState();

@@ -1,4 +1,5 @@
 import 'package:cuan_sheep/data/ImageAsset.dart';
+import 'package:cuan_sheep/services/model/ulasan/ulasan.dart';
 import 'package:cuan_sheep/ui/util/color_constant.dart';
 import 'package:cuan_sheep/ui/util/text_styles.dart';
 import 'package:cuan_sheep/ui/widgets/rating_star.dart';
@@ -6,7 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FeedbackProfile extends StatefulWidget {
-  const FeedbackProfile({super.key});
+  Ulasan data;
+  FeedbackProfile({super.key, required this.data});
 
   @override
   State<FeedbackProfile> createState() => _FeedbackProfileState();
@@ -31,7 +33,7 @@ class _FeedbackProfileState extends State<FeedbackProfile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Uji Kandang",
+                    widget.data.bidang_ahli,
                     style: bodyBoldTextStyle(
                       size: 16,
                       color: ColorConstants.text2,
@@ -39,7 +41,7 @@ class _FeedbackProfileState extends State<FeedbackProfile> {
                   ),
                   SizedBox(height: 2),
                   Text(
-                    "Agung Setyawan",
+                    widget.data.name,
                     style: bodyRegularTextStyle(size: 12),
                   ),
                   SizedBox(height: 4),
@@ -48,7 +50,7 @@ class _FeedbackProfileState extends State<FeedbackProfile> {
                       RatingStar(rating: 1, size: 15),
                       SizedBox(width: 4),
                       Text(
-                        "5/5",
+                        "${widget.data.rating}/5",
                         style: bodyRegularTextStyle(
                           size: 12,
                         ),
@@ -57,7 +59,7 @@ class _FeedbackProfileState extends State<FeedbackProfile> {
                   ),
                   SizedBox(height: 4),
                   Text(
-                    "Kandang sudah layak menjadi tempat ternak. standart pakan dengan wilayah sekitar juga sudah sangat cocok untuk pemeliharaan domba.",
+                    widget.data.ulasan,
                     textAlign: TextAlign.justify,
                     style: bodyRegularTextStyle(size: 12),
                   ),

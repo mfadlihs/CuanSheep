@@ -4,6 +4,7 @@ import 'package:cuan_sheep/ui/util/track_card_number.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:intl/intl.dart';
 
 class TrackCard extends StatefulWidget {
   const TrackCard({super.key});
@@ -15,6 +16,13 @@ class TrackCard extends StatefulWidget {
 class _TrackCardState extends State<TrackCard> {
   @override
   Widget build(BuildContext context) {
+    DateTime now = new DateTime.now();
+    DateTime date = DateTime(
+      now.day,
+      now.month,
+    );
+    var formatter = DateFormat.yMMM();
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -66,11 +74,7 @@ class _TrackCardState extends State<TrackCard> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            '24 ',
-                            style: bodyBoldTextStyle(),
-                          ),
-                          Text(
-                            "Okt",
+                            formatter.format(date),
                             style: bodyRegularTextStyle(),
                           ),
                         ],

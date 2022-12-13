@@ -63,7 +63,7 @@ class _MetodePembayaranCardState extends State<MetodePembayaranCard> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "127 7891 2445 145",
+                controller.choosedPayment.value.rekening,
                 style: h4TextStyle(
                   color: Color(0xffFCCE39),
                 ),

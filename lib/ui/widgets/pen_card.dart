@@ -92,7 +92,7 @@ class _PenCardState extends State<PenCard> {
                               ],
                             ),
                             Text(
-                              'Paket 5 Bulan',
+                              'Paket ${widget.data.duration} Bulan',
                               style: captionTextStyle(
                                 size: 10,
                                 weight: FontWeight.w500,

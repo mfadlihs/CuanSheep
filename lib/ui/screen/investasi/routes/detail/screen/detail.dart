@@ -1,11 +1,14 @@
 import 'package:cuan_sheep/ui/screen/investasi/controller/investasi_controller.dart';
-import 'package:cuan_sheep/ui/screen/investasi/routes/detail/widget/card_methode_pembayaran.dart';
+import 'package:cuan_sheep/ui/screen/investasi/routes/detail/widget/card_metode_pembayaran.dart';
+import 'package:cuan_sheep/ui/screen/investasi/routes/detail/widget/upload_bukti.dart';
 import 'package:cuan_sheep/ui/util/color_constant.dart';
 import 'package:cuan_sheep/ui/util/formatter.dart';
+import 'package:cuan_sheep/ui/util/route_names.dart';
 import 'package:cuan_sheep/ui/util/text_styles.dart';
 import 'package:cuan_sheep/ui/widgets/custom_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
@@ -21,7 +24,14 @@ class _InvestasiDetailScreenState extends State<InvestasiDetailScreen> {
   var id = Get.parameters['id'];
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print(id);
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppbar(
@@ -89,7 +99,24 @@ class _InvestasiDetailScreenState extends State<InvestasiDetailScreen> {
                     ),
                     SizedBox(height: 3),
                     MetodePembayaranCard(),
-                    SizedBox(height: 70),
+                    SizedBox(height: 20),
+                    InkWell(
+                      onTap: () {
+                        Get.toNamed(RoutePath.investasiUpload(id: id));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          SvgPicture.asset(
+                              'assets/icons/document_download.svg'),
+                          Text(
+                            "Bukti Pembayaran",
+                            style: h4TextStyle(),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 40),
                     InkWell(
                       child: Container(
                         padding: EdgeInsets.all(6),
@@ -104,7 +131,7 @@ class _InvestasiDetailScreenState extends State<InvestasiDetailScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Petujuk Vitual Account",
+                              "Petunjuk Vitual Account",
                               style: bodyRegularTextStyle(),
                             ),
                             Icon(Icons.chevron_right),
@@ -127,7 +154,7 @@ class _InvestasiDetailScreenState extends State<InvestasiDetailScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Petujuk Bank",
+                              "Petunjuk Bank",
                               style: bodyRegularTextStyle(),
                             ),
                             Icon(Icons.chevron_right),
@@ -150,7 +177,7 @@ class _InvestasiDetailScreenState extends State<InvestasiDetailScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Petujuk Tunai",
+                              "Petunjuk Tunai",
                               style: bodyRegularTextStyle(),
                             ),
                             Icon(Icons.chevron_right),
@@ -164,14 +191,16 @@ class _InvestasiDetailScreenState extends State<InvestasiDetailScreen> {
                         minimumSize: Size.fromHeight(50),
                         backgroundColor: Color(0xffEBEBEB),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        // Get.toNamed(RoutePath.investasiMetode(farmerId: ))
+                      },
                       child: Text(
-                        "Ubah Metode Transaksi",
+                        "Ubah Metode Pembayaran",
                         style: bodyRegularTextStyle(
                           color: Color(0xff020202).withOpacity(0.5),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
