@@ -1,12 +1,18 @@
 import 'package:cuan_sheep/ui/util/color_constant.dart';
+import 'package:cuan_sheep/ui/util/formatter.dart';
 import 'package:cuan_sheep/ui/util/text_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class MyInvestDetailCard extends StatelessWidget {
-  final String text;
+class MyInvestDetailCard extends StatefulWidget {
+  final text;
   const MyInvestDetailCard({super.key, required this.text});
 
+  @override
+  State<MyInvestDetailCard> createState() => _MyInvestDetailCardState();
+}
+
+class _MyInvestDetailCardState extends State<MyInvestDetailCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,9 +32,10 @@ class MyInvestDetailCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            text,
+            widget.text,
             style: bodyRegularTextStyle(),
           ),
+          SizedBox(height: 10),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -41,7 +48,7 @@ class MyInvestDetailCard extends StatelessWidget {
                       style: bodyBoldTextStyle(weight: FontWeight.w400),
                     ),
                     Text(
-                      "Rp. 3.300.000",
+                      Formatter.uang(16500000),
                       style: bodyBoldTextStyle(),
                     ),
                     SizedBox(height: 8),
@@ -50,7 +57,7 @@ class MyInvestDetailCard extends StatelessWidget {
                       style: bodyBoldTextStyle(weight: FontWeight.w400),
                     ),
                     Text(
-                      "60",
+                      "300 Kg",
                       style: bodyBoldTextStyle(),
                     ),
                   ],
@@ -75,7 +82,7 @@ class MyInvestDetailCard extends StatelessWidget {
                         style: bodyBoldTextStyle(weight: FontWeight.w400),
                       ),
                       Text(
-                        "Rp. 12.100.000",
+                        Formatter.uang(26400000),
                         style: bodyBoldTextStyle(),
                       ),
                       SizedBox(height: 8),
@@ -84,7 +91,7 @@ class MyInvestDetailCard extends StatelessWidget {
                         style: bodyBoldTextStyle(weight: FontWeight.w400),
                       ),
                       Text(
-                        "60",
+                        "480 Kg",
                         style: bodyBoldTextStyle(),
                       ),
                       SizedBox(height: 8),
@@ -102,7 +109,7 @@ class MyInvestDetailCard extends StatelessWidget {
                         style: bodyBoldTextStyle(weight: FontWeight.w400),
                       ),
                       Text(
-                        "5 Bulan",
+                        "3 Bulan",
                         style: bodyBoldTextStyle(),
                       ),
                       SizedBox(height: 8),

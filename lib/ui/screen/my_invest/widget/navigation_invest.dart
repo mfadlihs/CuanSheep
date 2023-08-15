@@ -20,7 +20,7 @@ class _MyInvestNavigationState extends State<MyInvestNavigation> {
   Widget build(BuildContext context) {
     return GetX<MyInvestController>(builder: (context) {
       return Container(
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         // color: ColorConstants.backgroundColor,
         color: controller.menu.value == 3
             ? ColorConstants.primaryColor
@@ -36,7 +36,7 @@ class _MyInvestNavigationState extends State<MyInvestNavigation> {
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(
-                    vertical: 18,
+                    vertical: 5,
                   ),
                   backgroundColor: controller.menu.value == 1
                       ? ColorConstants.primaryColor
@@ -62,7 +62,7 @@ class _MyInvestNavigationState extends State<MyInvestNavigation> {
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(
-                    vertical: 18,
+                    vertical: 5,
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -89,7 +89,7 @@ class _MyInvestNavigationState extends State<MyInvestNavigation> {
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(
-                    vertical: 18,
+                    vertical: 5,
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),

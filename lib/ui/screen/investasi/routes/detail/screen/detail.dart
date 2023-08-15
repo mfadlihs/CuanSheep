@@ -192,7 +192,7 @@ class _InvestasiDetailScreenState extends State<InvestasiDetailScreen> {
                         backgroundColor: Color(0xffEBEBEB),
                       ),
                       onPressed: () {
-                        // Get.toNamed(RoutePath.investasiMetode(farmerId: ))
+                        // Get.toNamed(RoutePath.investasiMetode(farmerId: far))
                       },
                       child: Text(
                         "Ubah Metode Pembayaran",

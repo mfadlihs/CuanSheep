@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cuan_sheep/services/api/api_client.dart';
 import 'package:cuan_sheep/ui/screen/my_invest/controller/myinvest_controller.dart';
 import 'package:cuan_sheep/ui/screen/my_invest/navigation/myinvest_history.dart';
 import 'package:cuan_sheep/ui/screen/my_invest/navigation/myinvest_proses.dart';
@@ -7,6 +8,7 @@ import 'package:cuan_sheep/ui/screen/my_invest/navigation/myinvest_recording.dar
 import 'package:cuan_sheep/ui/screen/my_invest/widget/myinvest_card_detail.dart';
 import 'package:cuan_sheep/ui/screen/my_invest/widget/navigation_invest.dart';
 import 'package:cuan_sheep/ui/util/color_constant.dart';
+import 'package:cuan_sheep/ui/widgets/bottom_navbar.dart';
 import 'package:cuan_sheep/ui/widgets/profile_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +27,18 @@ class _MyInvestScreenState extends State<MyInvestScreen> {
   final controller = Get.put(MyInvestController());
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      controller.data(await RestApi.getMyInvest(context));
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: BottomNavbar(route: 2),
         backgroundColor: ColorConstants.primaryColor,
         appBar: ProfileAppbar(
           isLeading: false,

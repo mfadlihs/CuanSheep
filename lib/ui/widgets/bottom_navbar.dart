@@ -65,6 +65,9 @@ class _BottomNavbarState extends State<BottomNavbar> {
             ),
             Expanded(
               child: InkWell(
+                onTap: () {
+                  Get.toNamed(RoutePath.myInvest);
+                },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,

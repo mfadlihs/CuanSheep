@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:cuan_sheep/data/ImageAsset.dart';
 import 'package:cuan_sheep/data/transaction_method_data.dart';
 import 'package:cuan_sheep/services/model/payment/payment.dart';
 import 'package:cuan_sheep/services/model/pen/pen.dart';
+import 'package:cuan_sheep/services/model/postInvest/post_invest.dart';
 import 'package:get/get.dart';
 import '../../../util/default_map.dart';
 
@@ -23,6 +26,10 @@ class InvestasiController extends GetxController {
 
   Rx<Payment> choosedPayment = Payment.initValue().obs;
 
+  RxnInt itung = RxnInt();
+
+  Rxn<PostInvest> postInvest = Rxn<PostInvest>();
+
   void changeMethodTransaction(String image, String text) {
     method_transaction(MethodTransaction(image: image, text: text));
     update();
@@ -35,4 +42,8 @@ class InvestasiController extends GetxController {
   List<Payment> getPaymentDetail(String id) {
     return paymentDetail.value.getOrElse(id, <Payment>[]);
   }
+}
+
+class RxNullable<T> {
+  Rx<T> setNull() => (null as T).obs;
 }

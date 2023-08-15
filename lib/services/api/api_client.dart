@@ -1,7 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:cuan_sheep/services/api/token.dart';
 import 'package:cuan_sheep/services/model/User/user.dart';
+import 'package:cuan_sheep/services/model/myinvest/my_invest.dart';
+import 'package:cuan_sheep/services/model/myinvest/myinvest_response.dart';
 import 'package:cuan_sheep/services/model/panduan/panduan.dart';
 import 'package:cuan_sheep/services/model/panduan/panduan_response.dart';
 import 'package:cuan_sheep/services/model/payment/payment.dart';
@@ -10,6 +13,8 @@ import 'package:cuan_sheep/services/model/pen/pen.dart';
 import 'package:cuan_sheep/services/model/pen/pen_detail_response.dart';
 import 'package:cuan_sheep/services/model/pen/pen_response.dart';
 import 'package:cuan_sheep/services/model/popup/popup.dart';
+import 'package:cuan_sheep/services/model/postInvest/post_invest.dart';
+import 'package:cuan_sheep/services/model/postInvest/post_invest_response.dart';
 import 'package:cuan_sheep/services/model/predict/predict_response.dart';
 import 'package:cuan_sheep/services/model/profile/profile.dart';
 import 'package:cuan_sheep/services/model/profile/profile_response.dart';
@@ -20,7 +25,7 @@ import 'package:cuan_sheep/ui/widgets/snackbar.dart';
 import 'package:cuan_sheep/utils/logout.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart' hide Response;
+import 'package:get/get.dart' hide Response hide FormData hide MultipartFile;
 
 String baseUrl = "http://tcah-angon.ruangbaca-fisipedu.my.id/api";
 
@@ -40,10 +45,6 @@ class RestApi {
   static onErrorToken(BuildContext context) {
     showAlert("error token, please refresh or logout", context, isFalse: true);
     logout();
-  }
-
-  static gatau(dynamic e) {
-    print(e);
   }
 
   static Future login(BuildContext context,
@@ -205,6 +206,50 @@ class RestApi {
       Response request = await api.get("$baseUrl/peternak/$id");
 
       ProfileResponse response = ProfileResponse.fromJson(request.data);
+      return response.data;
+    } on DioError catch (e) {
+      return onErrorToken(context);
+    }
+  }
+
+  static Future<PostInvest> postInvest(
+    BuildContext context, {
+    required File file,
+    required num user_id,
+    required num kandang_id,
+    required num pembayaran_id,
+    required num jumlah_unit,
+  }) async {
+    final api = Dio();
+
+    try {
+      api.options.headers = await header();
+      FormData formData = FormData.fromMap({
+        "bukti_pembayaran":
+            await MultipartFile.fromFile(file.path, filename: file.path),
+        "user_id": user_id,
+        "kandang_id": kandang_id,
+        "pembayaran_id": pembayaran_id,
+        "jumlah_unit": jumlah_unit,
+      });
+
+      Response request = await api.post('$baseUrl/investasi', data: formData);
+
+      PostInvestResponse response = PostInvestResponse.fromJson(request.data);
+      return response.data;
+    } on DioError catch (e) {
+      return onErrorToken(context);
+    }
+  }
+
+  static Future<List<MyInvest>> getMyInvest(BuildContext context) async {
+    final api = Dio();
+
+    try {
+      api.options.headers = await header();
+      Response request = await api.get('$baseUrl/investasi');
+
+      MyInvestResponse response = MyInvestResponse.fromJson(request.data);
       return response.data;
     } on DioError catch (e) {
       return onErrorToken(context);

@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
                   primarySwatch: ColorConstants.getPrimaryMaterialColor(),
                   fontFamily: 'Poppins',
                   scaffoldBackgroundColor: Colors.white,
+                  listTileTheme: ListTileThemeData(),
                   sliderTheme: SliderThemeData(
                     trackHeight: 10,
                     trackShape: GradientRectSliderTrackShape(
